@@ -5,12 +5,12 @@ from .views import logged_out_view
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('books/', views.BookListView.as_view(), name='books'),
+    re_path('books/', views.BookListView.as_view(), name='books'),
     re_path(r'^book/(?P<pk>\d+)$', views.BookDetailView.as_view(), name='book-detail'),
-    path('authors/', views.AuthorListView.as_view(), name='authors'),
+    re_path('authors/', views.AuthorListView.as_view(), name='authors'),
     re_path(r'^author/(?P<pk>\d+)$', views.AuthorDetailView.as_view(), name='author-detail'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('logged_out/', logged_out_view, name='logged_out'),
+    re_path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    re_path('logged_out/', logged_out_view, name='logged_out'),
     re_path(r'^mybooks/$', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
     re_path(r'borrowed/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'),
     re_path(r'^book/(?P<pk>[-\w]+)/renew/$', views.renew_book_librarian, name='renew-book-librarian'),
