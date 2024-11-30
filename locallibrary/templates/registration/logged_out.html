@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 {% extends "base_generic.html" %}
 
 {% block content %}
   <p>Logged out!</p>
 
-  <form method="post" action="{% url 'logout' %}">
-      {% csrf_token %}
-      <button type="submit">Logout</button>
-  </form>
-
-  <a href="{% url 'login' %}">Click here to login again.</a>
+  <a href="{% url 'login'%}">Click here to login again.</a>
 {% endblock %}
-</body>
-</html>

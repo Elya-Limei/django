@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Autor List</title>
-</head>
-<body>
 {% extends "base_generic.html" %}
+<head>{% block title %}<title>Author List</title>{% endblock %}</head>
 
 {% block content %}
-    <h1>Autor List</h1>
-
-    {% if author_list %}
+  <h1>Author List</h1>
+  {% if author_list %}
     <ul>
       {% for author in author_list %}
       <li>
-        <a href="{{ author.get_absolute_url }}">{{ author.last_name }}</a> ({{ author.lifespan }})
+        <a href="{{ author.get_absolute_url }}">{{ author.first_name }}</a> ({{author.date_of_birth}} - {{author.date_of_death }})
       </li>
       {% endfor %}
     </ul>
-    {% else %}
-      <p>There are no authors in the library.</p>
-    {% endif %}
+  {% else %}
+    <p>There are no authors in the library.</p>
+  {% endif %}
 {% endblock %}
-
-</body>
-</html>
